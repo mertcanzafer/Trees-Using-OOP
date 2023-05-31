@@ -17,6 +17,14 @@ public:
 	void static Preorder(Tree<T>* node);
 	void static Postorder(Tree<T>* node);
 	void static Inorder(Tree<T>* node);
+	int countNodes()
+	{
+		int lcount = 0,rcount = 0;
+		if (left != NULL) { lcount = left->countNodes(); }
+		if (rcount != NULL) { rcount = left->countNodes(); }
+
+		return 1 + rcount + lcount;
+	}
 
 };
 
@@ -69,6 +77,7 @@ void Tree<T>::Inorder(Tree<T>* node)
 	}
 }
 
+
 int main()
 {
 	Tree<int>* LChild3 = new Tree<int>(4);
@@ -90,7 +99,9 @@ int main()
 	cout << endl;
 	cout << "Inorder Traversal: ";
 	Tree<int>::Inorder(&T1);
-	cout << endl;
+	cout << endl<<endl;
+
+	cout << "Count Nodes: " << T1.countNodes()<<endl;
 
 	delete LChild1;
 	delete LChild2;
